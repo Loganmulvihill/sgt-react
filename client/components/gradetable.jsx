@@ -1,34 +1,22 @@
 import React from 'react';
 
-export default class GradeTable extends React.Component {
+import Grade from './grade';
 
-  createTable() {
-    return this.props.grades.map((studentGrade, index) => {
-      const { id, name, course, grade } = studentGrade;
-      return (
-        <tr key={id}>
-          <td>{name}</td>
-          <td>{course}</td>
-          <td>{grade}</td>
+function GradeTable(props) {
+  return (
+    <table className="table">
+      <thead className="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Grade</th>
         </tr>
-      );
-    });
-  }
-
-  render() {
-    return (
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.createTable()}
-        </tbody>
-      </table>
-    );
-  }
+      </thead>
+      <tbody>
+        <Grade grades={props.grades} />
+      </tbody>
+    </table>
+  );
 }
+
+export default GradeTable;
