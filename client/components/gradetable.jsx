@@ -13,10 +13,15 @@ function GradeTable(props) {
         </tr>
       </thead>
       <tbody>
-        <Grade grades={props.grades} />
+        {
+          props.grades.map(gradeData => {
+            return <Grade key={gradeData.id} grade={gradeData} />;
+          })
+        }
       </tbody>
     </table>
   );
+
 }
 
 export default GradeTable;
