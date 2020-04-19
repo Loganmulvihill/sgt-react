@@ -1,8 +1,19 @@
 import React from 'react';
 
-export default class Header extends React.Component {
+function Header(props) {
 
-  render() {
-    return (<h1>Student Grade Table</h1>);
-  }
+  return (
+    <header className="row">
+      <h1 className="col-8">Student Grade Table </h1>
+      <h2 className="col text-right">
+        Average Grade
+        <span className="badge badge-secondary">
+          {props.average}
+        </span>
+      </h2>
+    </header>
+  );
+
 }
+
+export default Header;
