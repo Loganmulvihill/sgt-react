@@ -13,8 +13,6 @@ class App extends React.Component {
   }
 
   deleteGrade(gradeId) {
-    console.log(gradeId);
-
     const req = {
       method: 'DELETE'
     };
