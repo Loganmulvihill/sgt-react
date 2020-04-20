@@ -4,7 +4,7 @@ import Grade from './grade';
 
 function GradeTable(props) {
   return (
-    <table className="table">
+    <table className="table table-striped">
       <thead className="thead-dark">
         <tr>
           <th>Name</th>
@@ -16,7 +16,7 @@ function GradeTable(props) {
       <tbody>
         {
           props.grades.map(gradeData => {
-            return <Grade key={gradeData.id} grade={gradeData} />;
+            return <Grade key={gradeData.id} grade={gradeData} delete={props.delete} />;
           })
         }
       </tbody>
