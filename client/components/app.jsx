@@ -9,6 +9,27 @@ class App extends React.Component {
     super(props);
     this.state = { grades: [] };
     this.postGrade = this.postGrade.bind(this);
+    this.deleteGrade = this.deleteGrade.bind(this);
+  }
+
+  deleteGrade(gradeId) {
+    const req = {
+      method: 'DELETE'
+    };
+    fetch(`/api/grades/${gradeId}`, req)
+      .then(res => res.json())
+      .then(updated => {
+        const newGrades = this.state.grades.slice();
+        for (let i = 0; i < newGrades.length; i++) {
+          if (newGrades[i].id === gradeId) {
+            const removedGrade = newGrades.splice(i, 1);
+            break;
+          }
+        }
+        this.setState({ grades: newGrades });
+
+      });
+
   }
 
   postGrade(newGrade) {
@@ -51,13 +72,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="col">
         <div>
           <Header average={this.getAverageGrade()} />
         </div>
         <div className="row">
           <div className="col-8">
-            <Gradetable grades={this.state.grades} />
+            <Gradetable grades={this.state.grades} delete={this.deleteGrade} />
           </div>
           <div className="col">
             <Gradeform post={this.postGrade}/>
