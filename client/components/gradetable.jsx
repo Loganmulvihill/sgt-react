@@ -10,6 +10,7 @@ function GradeTable(props) {
           <th>Name</th>
           <th>Course</th>
           <th>Grade</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
